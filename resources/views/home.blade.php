@@ -72,9 +72,18 @@
                                     </span>
                                     AZN
                                 </p>
-                                <svg class="featured-fav">
-                                    <use xlink:href="sprite.svg#fav"></use>
-                                </svg>
+                               
+                                <form action="{{ route('post.liked', $post->id) }}" method="post" id="addToFavForm">
+                                    @csrf
+                                    {{-- <input type="hidden" value="{{ $post->id }}"> --}}
+                                    <button type="submit">
+                                        <svg class="featured-fav">
+                                            <use xlink:href="sprite.svg#fav"></use>
+                                        </svg>
+                                    </button>
+                                </form>
+                                <span>{{ $post->likes->count() }}</span>
+
                                 <svg class="featured-vip">
                                     <use xlink:href="sprite.svg#vip"></use>
                                 </svg>

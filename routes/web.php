@@ -28,6 +28,9 @@
   Route::group(['middleware' => 'auth'], function() {
     Route::resource('/new-post', PostsController::class);
     Route::get('/dashboard', [UserController::class, 'showPosts'])->name('dashboard');
+
+    // handle like on post
+    Route::post('/post/{post}/liked', [PostsController::class, 'postLiked'])->name('post.liked');
   });
 
   // Route::middleware(['auth:sanctum', 'verified'])

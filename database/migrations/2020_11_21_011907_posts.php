@@ -21,13 +21,14 @@ class Posts extends Migration
             $table->string('post_img');
             $table->timestamps();
 
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            $table
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            // $table->unsignedBigInteger('user_id')->nullable();
+            // $table
+            //     ->foreign('user_id')
+            //     ->references('id')
+            //     ->on('users')
+            //     ->onDelete('cascade');
         });
     }
 

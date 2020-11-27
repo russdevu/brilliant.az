@@ -110,6 +110,43 @@ class PostsController extends Controller
         //
     }
 
+    // toggle boolean
+    public function toggleLike() 
+    {
+        $this->flag = !$this->flag;
+        return $this;
+    }
+
+    /**
+     * Handle the like on post...
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postLiked(Request $request, Posts $post)
+    {
+        // dd($request->user());
+        // dd($request->post->id);
+        dd($post->likes());
+        
+        // $post->likes()->create([
+        //     'user_id' => $request->user()->id,
+        //     'post_id' => $request->$post,
+        // ]);
+        
+            
+        return back();
+
+
+        // $post->toggleLike()->save();
+        // return response()->json([
+        //     'success' => false,
+        //     'message' => __('site.form_with_error'),
+        //     'errors' => $errors,
+        // ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

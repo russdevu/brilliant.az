@@ -30,7 +30,7 @@
 							Русский
 						</a>
 					</li>
-					<li class="header_bar-item">
+					{{-- <li class="header_bar-item">
 						<a href="{{ route(Route::currentRouteName(), 'en') }}">
 							English
 						</a>
@@ -39,7 +39,7 @@
 						<a href="{{ route(Route::currentRouteName(), 'az') }}">
 							Azərbaycan dili
 						</a>
-					</li>
+					</li> --}}
 					@if (Route::has('login'))
 						<li class="header_bar-item auth">
 							@auth
