@@ -1,0 +1,70 @@
+MYSQL CREDENTIALS:::::::::::::::
+root user:
+
+	login: root
+	password: root
+	accessing: sudo mysql -u root -p
+	
+regular user:
+
+	login: newuser
+	password: password123
+	accessing: mysql -u root -p
+	
+
+APACHE*************************
+
+start/restart/etc:
+	
+	sudo systemctl start/status/stop/restart apache2
+	
+	
+	
+VSCODE GITHUB TOO MANY CHANGES ISSUE**************************
+
+https://stackoverflow.com/questions/50958919/cant-push-code-into-github
+
+
+****************
+find out username which is running apache right now: ps aux | grep apache
+mount foocking cd: sudo mount /dev/cdrom /media/cdrom
+ALTAIR.GOLD password: altairgold2020
+See all crash files: ls -l /var/crash/
+set up permisssions for laravel project: https://stackoverflow.com/questions/30639174/how-to-set-up-file-permissions-for-laravel
+
+
+
+**** 05.11.2020
+Included "Include /etc/phpmyadmin/apache.conf" in "etc/apache2/apache2.conf"
+
+
+**** bar ram workarounds
+https://askubuntu.com/questions/41778/computer-freezing-on-almost-full-ram-possibly-disk-cache-problem
+midora as a browser, or unless use firefox as its a little bit better, google how to make browser eat less memory
+
+https://www.unixmen.com/quick-tip-enable-hardware-acceleration-chromium-chrome-browser/ ----- hardware acceleration
+
+
+
+/* Brilliant */
+
+klass
+gorod
+price
+=data
+-kredit
+
+// 16.11.2020
+1. рубрики будут в два ряда
+2. до 1500 азн
+3. до 1500 азн будет без поиска
+
+
+// brilliant gmail
+
+brilliant2020test@gmail.com
+Brilliant-2020-test
+
+
+
+// BTC === GEX birja

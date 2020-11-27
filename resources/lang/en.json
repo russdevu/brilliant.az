@@ -1,0 +1,17 @@
+{
+    "name": "Name",
+    "email": "E-mail",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "login": "Login",
+    "register": "Register",
+    "forgotPassword": "Forgot your password?",
+    "alreadyRegistered": "Already registered?",
+    "rememberMe": "Remember me",
+    "passResetLink": "Send",
+
+    "favs": "Favorites",
+    "signIn": "Sign in",
+
+    "brandSubtitle": "Jewellery buy & sale service"
+}

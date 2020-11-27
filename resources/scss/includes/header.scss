@@ -1,0 +1,379 @@
+.header
+	{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		&_bar
+		{
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			background: rgb(228,228,228);
+      background: linear-gradient(180deg, $gray 0%, $gray-lighter 100%);
+			position: relative;
+			z-index: 10;
+
+			&::after
+			{
+				content: "";
+				position: absolute;
+				top:0; left: 0; right: 0;
+				width: 100%; height: 2px;
+				display: block;
+
+				background-color: $gray-darker;
+			}
+
+			&-item {
+
+				&:not(:first-child) { margin-left: 15px; }
+
+				a:not(.auth_dropdown-link)
+				{
+					position: relative;
+				  @include flex-center;
+			   	padding: 12px;
+					color: $light-black;
+
+					&::after
+					{
+						content: "";
+						position: absolute;
+						top:0; left: 7.5%; right: 7.5%;
+						width: 85%; height: 2px;
+						display: block;
+						z-index: 1;
+					}
+
+					&:hover::after
+					{
+						background-color: $prim-color;
+					}
+				}
+
+				a, svg { transition: fill .3s ease, color .3s ease; }
+
+				&:hover:not(.auth)
+				{
+					a {color: $prim-color;}
+					svg {fill: $prim-color;}
+				}
+
+				&:active
+				{
+					a {color: $sexy-blue;}
+					svg {fill: $sexy-blue;}
+				}
+
+				// auth dropdown
+				&.auth
+				{
+					position: relative;
+
+					ul
+					{
+						position: absolute;
+						top: 100%;
+						right: 0;
+						z-index: 1;
+
+						display: flex;
+						flex-direction: column;
+						align-items: flex-start;
+						justify-content: space-around;
+
+						min-width: 145px;
+						width: 100%;
+						height: auto;
+
+						border-radius: 3px;
+						background: $gray-lighter;
+						-webkit-box-shadow: -6px 7px 10px -2px rgba(0,0,0,0.56);
+						box-shadow: -6px 7px 10px -2px rgba(0,0,0,0.56);
+
+						opacity: 0;
+						visibility: hidden;
+						max-height: 0;
+
+						&.active
+						{
+							opacity: 1;
+							visibility: visible;
+							max-height: 100000px;
+						}
+
+						li
+						{
+							display: inline-flex;
+							justify-content: flex-start;
+							width: 100%;
+
+							a {
+								display:flex;
+								align-items: center;
+								justify-content: flex-start;
+								width: 100%;
+								height: 100%;
+								padding: 10px;
+
+								color: darkslategray;
+								font-size: 1.4rem;
+
+								svg
+								{
+									margin-right: 5px;
+								}
+							}
+						}
+					}
+
+					// hover effects
+					a:hover
+					{
+						color: $prim-color;
+
+						svg {fill: $prim-color;}
+					}
+
+					ul li:hover
+					{
+						a {color: $prim-color;}
+						svg {fill: $prim-color;}
+						background: white;
+					}
+				}
+			}
+
+			.header-svg
+			{
+				width: 13px;
+				height: 13px;
+				margin-right: 5px;
+				fill: $light-black;
+
+				&_arr-down
+				{
+					width: 10px;
+					height: 10px;
+					margin: 3px 0 0 3px;
+					fill: $light-black;
+				}
+			}
+		}
+
+		&_brand
+		{
+			display: flex;
+			max-width: 100%;
+			width: 100%;
+			height: 14vh;
+			position: relative;
+
+			&-item {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: 15px;
+				background: url('/img/bgs/bg-hero-3.jpg');
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-position: center 35%;
+				background-color: #f3f3f3;
+				animation:  slide 21s
+							linear 2s
+							infinite alternate;
+
+				@keyframes slide
+				{
+					0%   { background-position: center 35%; }
+					100% { background-position: center 65%; }
+				}
+
+				h1 {
+					font-size: 45px;
+				}
+
+				span {
+					color: $prim-darker;
+					font-size: 15px;
+					margin-top: 5px;
+					padding-left: 7px;
+				}
+			}
+
+			img
+			{
+				position: absolute;
+				top: 0; left:0;
+				bottom: 0; right: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
+		}
+
+		&_nav
+		{
+			@include flex-between;
+			background: rgb(228,228,228);
+      		background: linear-gradient(0deg, $gray 0%, transparent 100%);
+
+			&::after
+			{
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0; right: 0;
+
+				display: block;
+				height: 2px;
+				width: 100%;
+
+				background-color: $gray-darker;
+			}
+
+			&-inner
+			{
+				height: 100%;
+				width: 100%;
+				display: flex;
+				align-items: center;
+
+				&--item
+				{
+					background: transparent;
+					position: relative;
+
+					a {
+						display: block;
+						padding: 7px 20px;
+						color: $light-black;
+						transition: color .25s;
+					}
+
+					&:hover
+					{
+						a {color: $prim-color;}
+
+						&::after
+						{	
+							content: "";
+							position: absolute;
+							bottom: 1px;
+							left: 10%; right: 10%;
+	
+							display: block;
+							height: 2px;
+							width: 80%;
+
+							background-color: $prim-color;
+						}
+					}
+				}
+			}
+		}
+
+		&_rubrics
+		{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			padding: 5px;
+			background: $gray-lighter;
+
+			&-up, &-down
+			{
+				width: 100%;
+				height: 50%;
+				max-height: 50%;
+				display: flex;
+				align-items: center;
+				justify-items: center;
+			}
+
+			&-item
+			{
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: flex-start;
+				flex: 1;
+				margin: 6px;
+				background: $gray-lighter;
+
+				// shiny effect
+
+				// &::after
+				// {
+				// 	content: "";
+				// 	width: 20%;
+				// 	height: 100%;
+				// 	position: absolute;
+				// 	top: 0;
+				// 	left: -70px;
+				// 	height: 98px;
+				// 	width: 50px;
+				// 	background: rgba(255, 255, 255, 0.4);
+				// 	transition: all .3s linear;
+				// 	transform: skewX(20deg) translateX(0);
+				// }
+
+				img
+				{
+					width: 100%;
+					height: 90px;
+					object-fit: cover;
+					object-position: center;
+					-webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.52);
+					box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.52);
+				}
+
+				p
+				{
+					position: absolute;
+					bottom: 0; 
+					left: 0;
+					right: 0;
+
+					@include flex-center;
+					height: 20%;
+
+					font-size: 13px;
+					font-weight: 500;
+					text-transform: uppercase;
+					text-align: center;
+
+					background: rgba($prim-color, .7);
+					color: $light-black;
+				}
+
+				// svg
+				// {
+				// 	height: 35px;
+				// 	width: 35px;
+				// 	fill: $white05;
+				// 	transition: fill .3s ease;
+				// }
+
+				// &:hover
+				// {
+
+				// 	// svg
+				// 	// {
+				// 	// 	fill: white;
+				// 	// }
+
+				// 	&::after
+				// 	{
+				// 		// transform: skewX(20deg) translateX(300px);
+				// 	}
+				// }
+			}
+		}
+	}

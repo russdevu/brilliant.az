@@ -1,0 +1,57 @@
+.footer 
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    width: 100%;
+    margin: 50px 0 15px;
+
+    background: rgba($prim-color, 0.2);
+
+    &_inner 
+    {
+        @include flex-center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        padding: 40px 20px 5px;
+
+        .fi 
+        {
+            &_logo {
+                margin-bottom: 15px;
+            }
+    
+            &_stuff {
+                max-width: 40%;
+                margin: 8px 0;
+                text-align: center;
+            }
+    
+            &_links
+            {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 20px 0;
+    
+                &-item {
+    
+                    color: $sexy-blue;
+                    text-decoration: underline;
+                    
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+    
+            &_copyright
+            {
+                margin-top: 20px;
+                color: $prim-darker;
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+
+// config
+@import './config/vars';
+@import './config/fonts';
+@import './config/mixins';
+@import './config/normalize';
+@import './config/forms';
+
+// includes
+
+      //search
+      @import './includes/simple-search';
+      @import './includes/advanced-search';
+
+      // main
+      @import './includes/header';
+      @import './includes/auth-modals';
+      @import './includes/footer';
+
+      // posts related
+      @import './includes/posts';
+      @import './includes/new-post';
+      @import './includes/single-post';
+
+// base
+@import './config/base';

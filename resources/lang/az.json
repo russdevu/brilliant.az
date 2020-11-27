@@ -1,0 +1,16 @@
+{
+    "name": "Adıvız",
+    "email": "E-mail",
+    "password": "Şifrəviz",
+    "confirmPassword": "Şifrəni təkrarlayın",
+    "login": "Giriş",
+    "register": "Registrasiya",
+    "forgotPassword": "Şifrəvizi unutduz?",
+    "alreadyRegistered": "Artıg ne bilim ne?",
+    "rememberMe": "Məni yadda saxlamaq",
+
+    "favs": "Sevimlilər",
+    "signIn": "Giriş",
+
+    "brandSubtitle": "Nə bilim nə alqı satqısı"
+}

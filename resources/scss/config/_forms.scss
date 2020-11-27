@@ -1,0 +1,113 @@
+.as_select
+{
+	position: relative;
+	cursor: pointer;
+
+	select
+	{
+		width: 100%;
+		padding: 5px 30px 5px 10px;
+		border: none;
+		border-radius: 3px;
+
+		background: white;
+		color: $light-black;
+
+		outline: none;
+		box-shadow: none;
+		text-shadow: none;
+
+
+		font-size: 1.6rem;
+
+		option {
+			font-size: 1.6rem;
+		}
+	}
+
+	span
+	{
+		position: absolute;
+		top: 0%; right:0%; bottom:0%;
+		height: 100%; width: 30px;
+		background: $gray-darker;
+		background: $gray-lighter;
+		display: block;
+		pointer-events: none;
+		border-radius: 3px;
+
+		&::before, &::after
+		{
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			--size: 5px;
+		}
+
+		&::before {
+			border-left: var(--size) solid transparent;
+			border-right: var(--size) solid transparent;
+			border-bottom: var(--size) solid $prim-color;
+			top: 35%;
+		}
+
+		&::after {
+			border-left: var(--size) solid transparent;
+			border-right: var(--size) solid transparent;
+			border-top: var(--size) solid $prim-color;
+			top: 65%;
+		}
+	}
+}
+
+input
+{
+	margin: 0 7px;
+	outline: none;
+	border: none;
+	transition: border-bottom .3s ease;
+	color: $light-black;
+
+
+	&.amount_input
+	{
+		padding: 5px 10px;
+		max-width: 75px;
+		background: rgba(255,255,255,.5);
+		border: 1px solid $gray-darker;
+		border-radius: 5px;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+
+		&:focus {
+			border-color: rgba(82, 168, 236, 0.8);
+    		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    		outline: 0 none;
+		}
+	}
+
+	&.single-input
+	{
+		background: transparent;
+		border-radius: 0px;
+		border-bottom: 2px solid rgba(0,0,0,.2);
+
+		&:focus {
+			border-bottom: 2px solid $prim-color;
+		}
+	}
+}
+
+// remove arrows from input type="number"
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

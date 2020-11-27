@@ -1,0 +1,14 @@
+// 16.11.2020
+1. рубрики будут в два ряда +
+2. до 1500 азн +
+3. до 1500 азн будет без поиска
+
+// 17.11.2020
+4. rewrite code on vanilla
+5. add phone field on registration, make it interactive
+6. set up localisation and set up lang switcher
+
+// *******
+Сложности:
+1. Автопроверка номера на валидность + отправка сообщения с кодом на номер, для авторизации
+2. Платёжные системы

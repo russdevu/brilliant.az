@@ -1,0 +1,183 @@
+.posts-wrapper
+{
+	.posts
+	{
+
+		&_header {
+
+			display: flex;
+			align-items: center;
+
+			.posts_title {
+				padding: 20px;
+				font-family: $brand-font;
+				color: $sexy-blue;
+
+				span {
+					font-weight: 600;
+				}
+			}
+
+			a {
+				align-self:flex-end;
+				margin-left: 3%;
+				padding: 20px;
+
+				color: $sky-blue;
+				font-size: 17px;
+				text-decoration: underline;
+
+				&:hover {
+					color: $sexy-blue;
+				}
+			}
+		}
+
+		&_cont
+		{
+			display: flex;
+			flex-wrap: wrap;
+			height: 100%;
+			padding: 30px 20px 10px;
+
+			background: $gray-lighter;
+
+			&-item
+			{
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				// flex: 1 0 23%;
+				width: 23%;
+				height: 300px;
+				margin: 9px 9px 30px 9px; //30px adds space to bottom + fills up the padding on &_cont. well, particularly. I added 10px padding anyway
+
+				background: white;
+				-webkit-box-shadow: 0px 0px 15px -4px #09302F;
+				box-shadow: 0px 0px 15px -4px #09302F;
+
+
+				.item_desc
+				{
+					height: 30%;
+					padding: 10px;
+
+					h6,
+					p,
+					span {
+						margin-bottom: 10px;
+					}
+
+					h6
+					{
+						color: $light-black;
+						font-weight: 600;
+					}
+
+					p
+					{
+						line-height: 1.1;
+						font-size: 15px;
+						color: $light-black;
+					}
+
+					span
+					{
+						font-size: 14px;
+						color: $black06;
+					}
+				}
+
+				img
+				{
+					width: 100%;
+					height: 70%;
+					object-fit: cover;
+					object-position: center;
+					transition: filter .3s ease;
+				}
+
+				&:hover {
+					.item_desc
+					{
+						background: rgba($prim-color, 0.1);
+					}
+
+					img
+					{
+						filter: brightness(50%);
+					}
+
+					.featured
+					{
+						&-zoom {
+							width: 25px;
+							height: 25px;
+							padding: 0;
+						}
+					}
+				}
+
+				.featured {
+
+					&-price
+					{
+						display: inline;
+						position: absolute;
+						left: 0;
+						top: 61%;
+						padding: 5px 10px;
+						max-width: 40%;
+
+						background: $prim-color;
+						color: $light-black;
+						font-size: 17px;
+						font-weight: 400;
+					}
+
+					&-fav
+					{
+						position: absolute;
+						top: 2.5%;
+						left: 2.5%;
+						width: 25px;
+						height: 26px;
+
+						fill: $white05;
+
+						&:hover
+						{
+							fill: #D7443E;
+						}
+					}
+
+					&-vip
+					{
+						position: absolute;
+						bottom: -1%;
+						right: 1%;
+						width: 33px;
+						height: 33px;
+						transform: rotate(45deg);
+					}
+
+					&-zoom
+					{
+						position: absolute;
+						top: 33%;
+						left: 50%;
+						transform: translate(-50%, -33%);
+						width: 0;
+						height: 0;
+						fill: white;
+
+						transition: all .3s ease-out;
+					}
+
+
+				}
+			}
+		}
+
+	}
+}

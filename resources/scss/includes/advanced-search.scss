@@ -1,0 +1,102 @@
+.as-wrapper
+{
+	background: rgba($prim-color, 0.1);
+	color: $light-black;
+	padding: 30px 15px;
+	font-size: 1.7rem;
+
+		.as
+		{
+			width: 100%;
+
+			@include flex-between;
+
+				&-item
+				{
+					margin-right: 10px;
+
+					&_price
+					{
+						@include flex-around;
+					}
+				}
+
+				.single-input_wrapper
+				{
+					position: relative;
+
+					input
+					{
+						width: 100%;
+						position: relative;
+						padding: 0 35px;
+						margin-left: 0;
+						line-height: 1.7;
+						font-size: 1.7rem;
+
+						color: $light-black;
+						letter-spacing: 0.5px;
+
+						&::before
+						{
+							content: url('/img/svg/main/search.svg');
+							display: block;
+							background-color: red;
+							background-size: 15px 15px;
+							position: absolute;
+							left: 7px;
+							width: 15px;
+							height: 15px;
+						}
+					}
+
+					label
+					{
+						svg
+						{
+							position: absolute;
+							left:10px;
+							top: 20%;
+							display: block;
+							width: 15px;
+							height: 15px;
+							fill: $prim-color;
+						}
+
+					}
+				}
+
+
+			.as_select--single
+			{
+				select
+				{
+					width: 160px;
+				}
+			}
+
+			.as_checkbox
+			{
+				padding: 8px;
+				display: flex;
+				justify-content: center;
+				align-items: flex-end;
+				margin-right: 10px;
+
+				background: rgba($prim-color, 0.15);
+				border-radius: 5px;
+
+				input
+				{
+					color: $light-black;
+					margin-left: 10px;
+					margin-bottom: 1px;
+				}
+			}
+
+			.as-btn {
+				align-self: flex-end;
+			}
+
+		}
+}

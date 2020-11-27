@@ -1,0 +1,30 @@
+
+.np_forms 
+{
+	padding:10px 80px;
+
+	.np_form-group 
+	{
+		display: flex;
+		flex-direction: column;
+		padding: 5px;
+		margin-bottom: 15px;
+
+		label {
+			font-size: 1.5rem;
+		}
+
+		input, textarea {
+			margin: 10px 0 0 0;
+			padding: 7px 10px;
+			line-height: 1.3;
+			font-size: 1.5rem;
+		}
+
+		textarea {
+			resize: none;
+			border: none;
+			outline: none;
+		}
+	}
+}
