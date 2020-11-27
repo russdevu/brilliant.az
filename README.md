@@ -1,2 +1,2 @@
 # brilliant.az
-Free jewerly selling web-application for people
+Jewerly selling web-application
