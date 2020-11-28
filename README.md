@@ -1,2 +1,2 @@
 # brilliant.az
-Free jewerly selling web-application for people
+Web-application for selling jewellery for free in Baku, AZE
