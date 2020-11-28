@@ -1191,11 +1191,22 @@ input[type=number] {
   left: 2.5%;
   width: 25px;
   height: 26px;
-  fill: rgba(255, 255, 255, 0.5);
 }
 
-.posts-wrapper .posts_cont-item .featured-fav:hover {
+.posts-wrapper .posts_cont-item .featured #addToFavs svg {
+  fill: rgba(255, 255, 255, 0.85);
+}
+
+.posts-wrapper .posts_cont-item .featured #addToFavs svg:hover {
   fill: #D7443E;
+}
+
+.posts-wrapper .posts_cont-item .featured #rmvFromFavs svg {
+  fill: #D7443E;
+}
+
+.posts-wrapper .posts_cont-item .featured #rmvFromFavs svg:hover {
+  fill: rgba(255, 255, 255, 0.85);
 }
 
 .posts-wrapper .posts_cont-item .featured-vip {

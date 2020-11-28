@@ -12,6 +12,12 @@
     @include('includes.search.simple-search')
 @endsection
 
+@section('response-json')
+    <div id="responseCont" style="width: 100%; height: 100px; background: lightgreen; color: black; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size 20px;">
+
+    </div>
+@endsection
+
 @section('main-container')
     <section class="posts-wrapper">
         <div class="container">
@@ -73,16 +79,35 @@
                                     AZN
                                 </p>
                                
-                                <form action="{{ route('post.liked', $post->id) }}" method="post" id="addToFavForm">
-                                    @csrf
-                                    {{-- <input type="hidden" value="{{ $post->id }}"> --}}
-                                    <button type="submit">
-                                        <svg class="featured-fav">
-                                            <use xlink:href="sprite.svg#fav"></use>
-                                        </svg>
-                                    </button>
-                                </form>
-                                <span>{{ $post->likes->count() }}</span>
+                               @auth
+                                    @if($post->likedBy(auth()->user()))
+                                        <form action="{{ route('post.unliked', $post) }}" method="post" id="rmvFromFavs">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">
+                                                <svg class="featured-fav">
+                                                    <use xlink:href="sprite.svg#fav"></use>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('post.liked', $post) }}" method="post" id="addToFavs">
+                                            @csrf
+                                            @method('POST')
+                                            <input type="hidden" value="{{ Auth::user()->id }}" id="userID" name="userID">
+                                            <input type="hidden" value="{{ $post->id }}" id="postID" name="postID">
+
+                                            <button type="submit">
+                                                <svg class="featured-fav">
+                                                    <use xlink:href="sprite.svg#fav"></use>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    @endif
+                                @endauth
+                                @guest
+                                    <!-- handle guest -->
+                                @endguest
 
                                 <svg class="featured-vip">
                                     <use xlink:href="sprite.svg#vip"></use>

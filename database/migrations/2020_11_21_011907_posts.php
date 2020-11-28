@@ -15,20 +15,12 @@ class Posts extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('post_title');
             $table->smallInteger('post_price');
             $table->text('post_desc');
             $table->string('post_img');
             $table->timestamps();
-
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-
-            // $table->unsignedBigInteger('user_id')->nullable();
-            // $table
-            //     ->foreign('user_id')
-            //     ->references('id')
-            //     ->on('users')
-            //     ->onDelete('cascade');
         });
     }
 

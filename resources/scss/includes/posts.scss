@@ -142,12 +142,25 @@
 						left: 2.5%;
 						width: 25px;
 						height: 26px;
+					}
 
-						fill: $white05;
+					#addToFavs svg 
+					{
+						fill: $white085;
 
-						&:hover
+						&:hover 
 						{
 							fill: #D7443E;
+						}
+					}
+
+					#rmvFromFavs svg 
+					{
+						fill: #D7443E;
+
+						&:hover 
+						{
+							fill: $white085;
 						}
 					}
 

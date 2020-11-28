@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
+use Illuminate\Http\Client\Response;
 
 class PostsController extends Controller
 {
@@ -126,25 +127,45 @@ class PostsController extends Controller
      */
     public function postLiked(Request $request, Posts $post)
     {
-        // dd($request->user());
-        // dd($request->post->id);
-        dd($post->likes());
+        // defending post from 2nd like from the same user
+        if($post->likedBy($request->user()))
+        {
+            return response(null, 409);
+        }
         
-        // $post->likes()->create([
-        //     'user_id' => $request->user()->id,
-        //     'post_id' => $request->$post,
-        // ]);
+        // ajax post
+        if (request()->ajax()) {
+            $post->likes()->create([
+                'user_id' => $request->userID,
+                'post_id' => $request->postID,
+            ]);
+
+            $response = array(
+                'status' => 'success',
+                'msg' => 'Setting created successfully',
+            );
+
+            return response()->json($response);
+        } 
+        else 
+        {
+            return 'no';
+        }
+        // return back();
         
-            
+    }
+
+    /**
+     * Handle the unlike on post...
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postUnliked(Request $request, Posts $post)
+    {
+        $request->user()->likes()->where('post_id', $post->id)->delete();
         return back();
-
-
-        // $post->toggleLike()->save();
-        // return response()->json([
-        //     'success' => false,
-        //     'message' => __('site.form_with_error'),
-        //     'errors' => $errors,
-        // ]);
     }
 
     /**

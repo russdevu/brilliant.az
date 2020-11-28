@@ -19379,14 +19379,42 @@ $(function () {
     formSignIn.removeClass('active');
     formRegister.removeClass('active');
   });
-});
-var navDropUl = $('li.auth ul');
+}); // navbar dropdown
+
 $('li.auth a').on(click, function (e) {
+  var navDropUl = $('li.auth ul');
   e.stopPropagation();
   navDropUl.toggleClass('active');
   $(document).on(click, function (e) {
     if (navDropUl.hasClass('active') && e.target != navDropUl) {
       navDropUl.removeClass('active');
+    }
+  });
+}); // ajax form submissions
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$('#addToFavs').on('submit', function (e) {
+  e.preventDefault();
+  var userID = $('#userID').val();
+  var postID = $('#postID').val();
+
+  var _token = $('meta[name="csrf-token"]').attr('content');
+
+  $.ajax({
+    url: "/post/" + postID + "/liked",
+    type: "POST",
+    data: {
+      user_id: userID,
+      post_id: postID
+    },
+    dataType: 'JSON',
+    _token: _token,
+    success: function success(data) {
+      $('#responseCont').append(data.msg);
     }
   });
 });

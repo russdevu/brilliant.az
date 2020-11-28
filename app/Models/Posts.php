@@ -21,8 +21,13 @@ class Posts extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function likedBy(User $user) 
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
+
     public function likes()
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(Like::class, 'post_id', 'id');
     }
 }
