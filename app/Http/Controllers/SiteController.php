@@ -21,8 +21,8 @@ class SiteController extends Controller
         return view('profile.new-post');
     }
 
-    public function advancedSearch()
+    public function search()
     {
-        return view('advanced-search');
+        return view('search');
     }
 }

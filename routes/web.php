@@ -22,7 +22,7 @@
   // });
 
   Route::get('/', [SiteController::class, 'index'])->name('home');
-  Route::get('/advanced-search', [SiteController::class, 'advancedSearch'])->name('advanced.search');
+  Route::get('/search', [SiteController::class, 'search'])->name('search');
   Route::get('/post/{id}', [PostsController::class, 'show']);
 
   Route::group(['middleware' => 'auth'], function() {

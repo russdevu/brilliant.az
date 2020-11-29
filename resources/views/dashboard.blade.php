@@ -2,66 +2,8 @@
 
 @section('page-title', Auth::user()->name . ' | ' . ' Профиль')
 
-<!-- Simple Search -->
-@section('simple-search')
-    <div class="ss-wrapper">
-        <form class="ss" method="GET">
-                <div class="ss_select ss_select--single ss-item">
-                    <select>
-                        <option value="all">Все изделия</option>
-                        <option value="Бриллианты">Бриллианты</option>
-                        <option value="Кольца">Кольца</option>
-                        <option value="Серьги">Серьги</option>
-                    </select>
-                    <span></span>
-                </div>
-
-                <div class="ss_select ss_select--single ss-item">
-                    <select>
-                        <option value="all">Город</option>
-                        <option value="Баку">Баку</option>
-                        <option value="Гянджа">Гянджа</option>
-                        <option value="Сумгаит">Сумгаит</option>
-                    </select>
-                    <span></span>
-                </div>
-
-                <div class="ss-item_price ss-item">
-                    <label for="currency">
-                        Цена,&nbsp;&nbsp;AZN
-                    </label>
-                    <input 	class="amount_input"
-                            type="number"
-                            name="amount">
-                        <p>—</p>
-                    <input  class="amount_input"
-                            type="number"
-                            name="amount">
-                </div>
-
-                <div class="ss_checkbox ss-item">
-                    <label for="barter">Бартер</label>
-                    <input id="barter" name="barter" type="checkbox">
-                </div>
-
-                <div class="single-input_wrapper">
-                    <label>
-                        <svg>
-                            <use xlink:href="sprite.svg#search">
-                            </use>
-                        </svg>
-                    </label>
-                    <input class="single-input ss-item" type="text">
-                </div>
-
-                <div class="ss-item">
-                    <button class="primary-btn searchBtn" type="submit">
-                        Поиск
-                    </button>
-                </div>
-
-        </form>
-    </div>
+@section('search')
+    @include('includes.search.advanced-search')
 @endsection
 
 @section('main-container')

@@ -19471,8 +19471,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/brilliant.az/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/brilliant.az/resources/scss/main.scss */"./resources/scss/main.scss");
+__webpack_require__(/*! c:\OpenServer\domains\brilliant.az\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\OpenServer\domains\brilliant.az\resources\scss\main.scss */"./resources/scss/main.scss");
 
 
 /***/ })

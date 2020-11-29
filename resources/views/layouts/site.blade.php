@@ -156,7 +156,7 @@
 			</header>
 
 			<!-- Search -->
-			@yield('simple-search')
+			@yield('search')
 
 			@yield('response-json')
 			

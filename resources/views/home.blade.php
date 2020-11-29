@@ -8,7 +8,7 @@
 @endsection
 
 <!-- Simple Search -->
-@section('simple-search')
+@section('search')
     @include('includes.search.simple-search')
 @endsection
 
