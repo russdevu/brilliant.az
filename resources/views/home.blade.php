@@ -94,9 +94,7 @@
                                         <form action="{{ route('post.liked', $post) }}" method="post" id="addToFavs">
                                             @csrf
                                             @method('POST')
-                                            <input type="hidden" value="{{ Auth::user()->id }}" id="userID" name="userID">
-                                            <input type="hidden" value="{{ $post->id }}" id="postID" name="postID">
-
+                                            <input type="hidden" value="{{ $post->id }}" id="postID" name="post_id">
                                             <button type="submit">
                                                 <svg class="featured-fav">
                                                     <use xlink:href="sprite.svg#fav"></use>

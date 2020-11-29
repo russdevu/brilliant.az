@@ -20,7 +20,6 @@
 					</use>
 				</svg>
 			</div>
-			<input type="hidden">
 		</div>
 
 		<div class="slot">

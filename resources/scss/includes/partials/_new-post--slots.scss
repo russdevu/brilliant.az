@@ -51,6 +51,7 @@
 			width: 20%;
 			height: auto;
 			flex: 1;
+			cursor: pointer;
 
 			&:last-child
 			{
@@ -83,6 +84,11 @@
 					background: rgba($prim-color, .7);
 				}
 			}
+
+			// input 
+			// {
+			// 	display: none;
+			// }
 			
 		}
 	}

@@ -1336,6 +1336,7 @@ input[type=number] {
   width: 20%;
   height: auto;
   flex: 1;
+  cursor: pointer;
 }
 
 .new_post-inner .np_form-sec--inner .slots_container .slot:last-child {

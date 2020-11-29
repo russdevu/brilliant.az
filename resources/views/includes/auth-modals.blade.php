@@ -52,23 +52,23 @@
                 @csrf
 
                 <div class="popup-form_group">
-                    <label for="name">{{ __('name') }}</label>
-                    <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <label>{{ __('name') }}</label>
+                    <input type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                 </div>
 
                 <div class="popup-form_group">
-                    <label for="email">{{ __('email') }}</label>
-                    <input id="email" type="email" name="email" :value="old('email')" required />
+                    <label>{{ __('email') }}</label>
+                    <input type="email" name="email" :value="old('email')" required />
                 </div>
 
                 <div class="popup-form_group">
-                    <label for="password">{{ __('password') }}</label>
-                    <input id="password" type="password" name="password" required autocomplete="new-password" />
+                    <label>{{ __('password') }}</label>
+                    <input type="password" name="password" required autocomplete="new-password" />
                 </div>
 
                 <div class="popup-form_group">
-                    <label for="password_confirmation">{{ __('confirmPassword') }}</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    <label>{{ __('confirmPassword') }}</label>
+                    <input type="password" name="password_confirmation" required autocomplete="new-password" />
                 </div>
 
                 <div class="popup-form_group">
@@ -102,8 +102,8 @@
                 </p>
 
                 <div class="popup-form_group">
-                    <label for="email">{{ __('email') }}</label>
-                    <input id="email" type="email" name="email" :value="old('email')" required autofocus />
+                    <label>{{ __('email') }}</label>
+                    <input type="email" name="email" :value="old('email')" required autofocus />
                 </div>
 
                 <div class="popup-form_group">

@@ -136,16 +136,11 @@ class PostsController extends Controller
         // ajax post
         if (request()->ajax()) {
             $post->likes()->create([
-                'user_id' => $request->userID,
+                'user_id' => Auth::user()->id,
                 'post_id' => $request->postID,
             ]);
 
-            $response = array(
-                'status' => 'success',
-                'msg' => 'Setting created successfully',
-            );
-
-            return response()->json($response);
+            return response()->json(['success' => 'Ajax request submitted successfully']);
         } 
         else 
         {
