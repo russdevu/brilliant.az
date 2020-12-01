@@ -39,33 +39,55 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
+        // ******* WORKING DEMO **************
+        // $user = Auth::user();
 
-        if ($request->hasFile('post_img')) {
-            if ($request->file('post_img')->isValid()) {
+        // // generating random ID of 5 chars for folder name
+        // // so the structure will be: (user id folder) -> (unique id from post) -> images
+        // $folderID = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 5);
 
-                // validate img
-                $request->validate([
-                    'post_img' => 'image|mimes:jpeg,png,jpg|max:2048',
-                ]);
-                #TODO validate also title, price, desc and so on.
+        // if ($request->hasFile('post_img') && $request->file('post_img')->isValid()) {
+        //     // validate img
+        //     $request->validate([
+        //         'post_img' => 'required|mimes:jpeg,png,jpg|max:2048',
+        //         'post_title' => 'required|max:100',
+        //         'post_desc' => 'required|max:500'
+        //     ]);
 
-                // fetching img file name
-                $fileName = $request->post_img->getClientOriginalName();
-                $request->post_img->storeAs('post_images', $user->id . '/' . $fileName, 'public');
+        //     // fetching img file name & setting location
+        //     $fileName = $request->post_img->getClientOriginalName();
+        //     $request->post_img->storeAs('post_images', $user->id . '/' . $folderID . '/' . $fileName, 'public');
 
-                // sending data to db 'posts'
-                Posts::create([
-                    'user_id' => $user->id,
-                    'post_title' => $request->input('post_title'),
-                    'post_price' => $request->input('post_price'),
-                    'post_desc' => $request->input('post_desc'),
-                    'post_img' => $fileName,
-                ]);
+        //     // sending data to db 'posts'
+        //     Posts::create([
+        //         'user_id' => $user->id,
+        //         'post_title' => $request->input('post_title'),
+        //         'post_price' => $request->input('post_price'),
+        //         'post_desc' => $request->input('post_desc'),
+        //         'post_img' => $fileName,
+        //     ]);
 
-                return back()->with('status', 'Публикация отправлена');
-            }
-        }   
+        //     return back()->with('status', 'Публикация отправлена');
+        // }  else {
+        //     return back()->with('status', 'Что-то не так...');
+        // }
+        // ******* END WORKING DEMO 
+        $path = storage_path('tmp/uploads');
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $file = $request->file('file');
+
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+
+        $file->move($path, $name);
+
+        return response()->json([
+            'name'          => $name,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
     }
 
     /**
@@ -117,35 +139,13 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function postLiked(Request $request, Posts $post)
-    public function postLiked(Request $request, Like $like)
+    public function postLiked(Request $request, Posts $post)
     {
-        // **** Working demo without ajax
-        // $post->likes()->create([
-        //     'user_id' => Auth::user()->id,
-        //     'post_id' => $request->input('post_id'),
-        // ]);
-        // return back();
-        // **** end working demo
-
-        $like = new Like;
-        
-        // defending post from 2nd like from the same user
-        // if($post->likedBy($request->user()))
-        // {
-        //     return response(null, 409);
-        // }
-        
-        // // ajax post
-        // if (request()->ajax()) {
-            
-            // return $request;
-        //     return response()->json(['success' => 'Ajax request submitted successfully']);
-        // else 
-        // {
-        //     return 'no';
-        // }
-        
+        $post->likes()->create([
+            'user_id' => Auth::user()->id,
+            'post_id' => $request->input('post_id'),
+        ]);
+        return back();
     }
 
     /**

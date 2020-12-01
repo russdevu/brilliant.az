@@ -1,16 +1,14 @@
 @extends('layouts.site')
 
-@section('response-json')
-	<div id="responseCont" style="width: 100%; height: 100px; background: lightgreen; color: black; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size 20px;"></div>
+@section('styles')
+	<link rel="stylesheet" href="{{ asset('css/dropzone.min.css') }}">
 @endsection
-
 
 @section('main-container')
 	<!-- Temporary Alerts -->
 	@if (session('status'))
-		<div class="alert alert-success" style="background:green; padding: 20px;" role="alert">
+		<div class="alert alert-success" style="background:#C1EEB0; padding: 20px; color: green; font-weight: bold;" role="alert">
 			{{session('status')}}
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, ullam.
 		</div>
 	@endif
 
@@ -28,7 +26,9 @@
 		</div>
 
 		<div class="container new_post-inner">
-			<form class="np_form" action="/new-post" method="POST" enctype="multipart/form-data">
+			@include('includes.new-post--slots')
+
+			{{-- <form class="np_form" action="/new-post" method="POST" enctype="multipart/form-data">
 				@csrf
 				<!-- form section -->
 				<div class="np_form-sec">
@@ -38,9 +38,11 @@
 
 					<div class="np_form-sec--inner">
 
-						@include('includes.new-post--slots')
-
 						@include('includes.new-post--forms')
+
+						@if($errors->any())
+							{!! implode('', $errors->all('<div>:message</div>')) !!}
+						@endif
 
 						<button type="submit" class="primary-btn" id="newPostSubmit">
 							Отправить
@@ -48,7 +50,68 @@
 
 					</div>
 				</div>
-			</form>
+			</form> --}}
 		</div>
 	</section>
+@endsection
+
+@section('scripts')
+	<script src="{{ asset('js/dropzone.min.js') }}"></script>
+	<script>
+		Dropzone.autoDiscover = false;
+
+		var myDropzone = new Dropzone(".dropzone", {
+			url: '{{ route('upload.images') }}',
+			headers: {
+				'X-CSRF-TOKEN': "{{ csrf_token() }}"
+			},
+			autoProcessQueue: false,
+			autoDiscover: false,
+			maxFilesize: 2,
+			maxFiles: 10,
+			paramName: "post_img",
+			parallelUploads: 10,
+			acceptedFiles: ".jpeg,.jpg,.png",
+			success: function (file, response) {
+				$('#uploadImagesForm').append('<input type="hidden" name="document[]" value="' + response.name + '">');
+
+				uploadedDocumentMap[file.name] = response.name;
+			},
+			removedfile: function (file) {
+				file.previewElement.remove()
+				var name = ''
+				if (typeof file.file_name !== 'undefined') {
+					name = file.file_name
+				} else {
+					name = uploadedDocumentMap[file.name]
+				}
+				$('form').find('input[name="document[]"][value="' + name + '"]').remove()
+			},
+			init: function () {
+				this.on("maxfilesexceeded", function (file) {
+					alert("Вы уже загрузили макс. количество изображений!");
+				});
+
+				@if(isset($project) && $project->document)
+					var files =
+					{!! json_encode($project->document) !!}
+					for (var i in files) {
+						var file = files[i]
+						this.options.addedfile.call(this, file)
+						file.previewElement.classList.add('dz-complete')
+						$('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
+					}
+				@endif
+			},
+			// messages
+			dictFallbackMessage: "Вашим браузером не поддерживаются drag'n'drop загрузки",
+			dictMaxFilesExceeded: "Нельзя загружать больше 10-ти фотографий",
+
+		});
+
+		$('#submitDropFiles').click(function () {
+			myDropzone.processQueue();
+		});
+
+	</script>
 @endsection

@@ -135,11 +135,7 @@ var alertNoClose = new AlertBox('#alert-area', {
 
 
 // ajax form submissions
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+
 
 // $('#addToFavs').on('submit', function (e) {
 //     e.preventDefault();
@@ -166,5 +162,3 @@ $.ajaxSetup({
 //         },
 //     })
 // })
-
-

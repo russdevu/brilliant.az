@@ -1,10 +1,213 @@
 
-.single-post_container
+
+.sp_wrapper 
 {
   display: flex;
-  justify-content: space-between;
+  background: rgba($gray-lighter, .3);
   padding: 50px 15px;
-  background: $gray-lighter;
+
+  .single-post_container
+  {
+    width: 78%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .post
+    {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 35px 25px;
+
+      border-radius: 5px; 
+      background: white;
+      -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.37); 
+      box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.37);
+
+      &_header 
+      {
+        position: relative;
+
+        &-title 
+        {
+          margin-left: 4px;
+          color: $black085;
+        }
+
+        &-price 
+        {
+          color: $black07;
+          margin: 25px 0;
+          margin-left: 4px;
+          font-weight: 500;
+        }
+
+        &--svgs 
+        {
+          fill: $black06;
+          width: 25px;
+          height: 25px;
+        }
+
+        &-makevip 
+        {
+          display: inline-flex;
+          align-items: flex-end;
+          padding: 10px;
+
+          font-weight: 500;
+          font-size: 16px;
+          text-transform: uppercase;
+
+          background: rgba($gray-lighter, .4);
+          border-radius: 5px;
+          color: $black06;
+
+          svg {
+            margin-right: 6px;
+            width: 20px;
+            height: 20px;
+            fill: $black085;
+          }
+        }
+
+        &-tags
+        {
+          display: inline-flex;
+          flex-wrap: wrap;
+          background: rgba($prim-color, .05);
+          padding: 7px;
+          margin-top: 25px;
+          border-radius: 4px;
+
+          &--item
+          {
+            @include flex-center;
+            display: inline-flex;
+            color: $black06;
+            padding: 7px;
+            margin: 7px;
+            border: 1px solid $black06;
+            border-radius: 2px;
+            font-size: 15px;
+
+            span 
+            {
+              margin-left: 5px;
+              font-weight: 500;
+            }
+          }
+        }
+
+        hr 
+        {
+          margin: 25px 3px;
+          color: $black02;
+        }
+
+        &-desc 
+        {
+          padding: 5px;
+
+          &--title 
+          {
+            margin-bottom: 15px;
+            color: $black07;
+          }
+
+          &--desc 
+          {
+            color: $black07;
+            max-width: 90%;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: .7px;
+          }
+        }
+
+        &-footer 
+        {
+          display: flex;
+          align-items: center;
+
+          &--item
+          {
+            position: relative;
+            padding: 7px 12px;
+            line-height: 1.4;
+            background: rgba($gray-lighter, .4);
+            border-radius: 5px;
+            color: $black085;
+
+            span 
+            {
+              font-weight: 500;
+              color: $black085;
+            }
+
+            &:not(:last-child) 
+            {
+              margin-right: 5px;
+            }
+          }
+        }
+
+        &-buttons
+        {
+          position: absolute;
+          right: 0; top: 0;
+
+          #addToFavBtn 
+          {
+
+          }
+
+          #shareBtn 
+          {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .post_s
+    {
+      flex-wrap: wrap;
+      margin-top: 25px;
+      max-width: 100%;
+
+      .post_slots
+      {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        overflow: hidden;
+
+        &-img--main,
+        &-img 
+        {
+          margin: 10px;
+        }
+
+        &-img--main 
+        {
+          width: 100%;
+          max-height: 500px;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        &-img 
+        {
+          flex: 1;
+          width: 25%;
+          height: 150px;
+        }
+      }
+    }
+  }
 
   // ad
   .sp_ad-container {
@@ -12,168 +215,5 @@
     max-height: 400px;
     background: $gray-darker;
     margin-left: 20px;
-  }
-
-  .post
-  {
-    width: 78%;
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-
-    border-radius: 5px; 
-    background: white;
-    -webkit-box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.37); 
-    box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.37);
-
-    &_header 
-    {
-      position: relative;
-
-      &-title 
-      {
-        margin-left: 4px;
-        color: $black085;
-      }
-
-      &-price 
-      {
-        color: $black07;
-        margin: 25px 0;
-        margin-left: 4px;
-        font-weight: 500;
-      }
-
-      &--svgs 
-      {
-        fill: $black06;
-        width: 25px;
-        height: 25px;
-      }
-
-      &-makevip 
-      {
-        display: inline-flex;
-        align-items: flex-end;
-        padding: 10px;
-
-        font-weight: 500;
-        font-size: 16px;
-        text-transform: uppercase;
-
-        background: rgba($gray-lighter, .4);
-        border-radius: 5px;
-        color: $black06;
-
-        svg {
-          margin-right: 6px;
-          width: 20px;
-          height: 20px;
-          fill: $black085;
-        }
-      }
-
-      &-tags
-      {
-        display: inline-flex;
-        flex-wrap: wrap;
-        background: rgba($prim-color, .05);
-        padding: 7px;
-        margin-top: 25px;
-        border-radius: 4px;
-
-        &--item
-        {
-          @include flex-center;
-          display: inline-flex;
-          color: $black06;
-          padding: 7px;
-          margin: 7px;
-          border: 1px solid $black06;
-          border-radius: 2px;
-          font-size: 15px;
-
-          span 
-          {
-            margin-left: 5px;
-            font-weight: 500;
-          }
-        }
-      }
-
-      hr 
-      {
-        margin: 25px 3px;
-        color: $black02;
-      }
-
-      &-desc 
-      {
-        padding: 5px;
-
-        &--title 
-        {
-          margin-bottom: 15px;
-          color: $black07;
-        }
-
-        &--desc 
-        {
-          color: $black07;
-          max-width: 90%;
-          font-size: 17px;
-          font-weight: 400;
-          line-height: 1.5;
-          letter-spacing: .7px;
-        }
-      }
-
-      &-footer 
-      {
-        display: flex;
-        align-items: center;
-
-        &--item
-        {
-          position: relative;
-          padding: 7px 12px;
-          line-height: 1.4;
-          background: rgba($gray-lighter, .4);
-          border-radius: 5px;
-          color: $black085;
-
-          span 
-          {
-            font-weight: 500;
-            color: $black085;
-          }
-
-          &:not(:last-child) 
-          {
-            margin-right: 5px;
-          }
-        }
-      }
-
-      &-buttons
-      {
-        position: absolute;
-        right: 0; top: 0;
-
-        #addToFavBtn 
-        {
-
-        }
-
-        #shareBtn 
-        {
-          margin-left: 10px;
-        }
-      }
-    }
-
-    &_slots
-    {
-    }
   }
 }

@@ -27,6 +27,7 @@
 
   Route::group(['middleware' => 'auth'], function() {
     Route::resource('/new-post', PostsController::class);
+    Route::post('/upload-images', [PostsController::class, 'store'])->name('upload.images');
     Route::get('/dashboard', [UserController::class, 'showPosts'])->name('dashboard');
 
     // handle like on post

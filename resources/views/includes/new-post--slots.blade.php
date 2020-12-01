@@ -1,5 +1,5 @@
 <div class="slots">
-	<div class="slots_desc">
+	{{-- <div class="slots_desc">
 		<label>
 			Загрузите изображения
 				<span>
@@ -32,7 +32,6 @@
 					</use>
 				</svg>
 			</div>
-			<input type="hidden">
 		</div>
 
 		<div class="slot">
@@ -45,7 +44,6 @@
 					</use>
 				</svg>
 			</div>
-			<input type="hidden">
 		</div>
 
 		<div class="slot">
@@ -58,7 +56,6 @@
 					</use>
 				</svg>
 			</div>
-			<input type="hidden">
 		</div>
 
 		<div class="slot">
@@ -71,7 +68,22 @@
 					</use>
 				</svg>
 			</div>
-			<input type="file" name="post_img">
+			<input type="file" name="post_img" multiple>
 		</div>
-	</div>
+	</div> --}}
+
+	<form action="{{ route('upload.images') }}" method="POST" class="dropzone" id="uploadImagesForm" enctype="multipart/form-data">
+
+		@csrf
+		<div class="dz-message" data-dz-message style="width:60%; margin: 0 auto;">
+				<span style="font-weight: 400; font-size: 17px;">
+						Перетащите и отпустите изображения в это поле. 
+					<br><br>
+						Вы также можете кликнуть по этому полю и загрузить несколько изображений удерживая клавишу Ctrl, либо просто выделить нужные изображения и нажать "ОК".
+					<br><br>
+						Нельзя загружать более 10-ти изображений.
+				</span>
+		</div>
+		<button class="primary-btn" width="100px" id="submitDropFiles">SUBMIT</button>
+	</form>	
 </div>
