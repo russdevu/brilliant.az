@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@section('response-json')
+	<div id="responseCont" style="width: 100%; height: 100px; background: lightgreen; color: black; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size 20px;"></div>
+@endsection
+
+
 @section('main-container')
 	<!-- Temporary Alerts -->
 	@if (session('status'))
@@ -8,15 +13,6 @@
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, ullam.
 		</div>
 	@endif
-	{{-- @if (count($errors) > 0)
-		<div class="alert alert-danger">
-			<ul>
-				@foreach ($errors->all() as $error)
-				<li>{{$error}}</li>      
-				@endforeach
-			</ul>
-		</div>
-	@endif --}}
 
 	<section class="new_post">
 		<div class="new_post-title">
@@ -34,7 +30,6 @@
 		<div class="container new_post-inner">
 			<form class="np_form" action="/new-post" method="POST" enctype="multipart/form-data">
 				@csrf
-				<input type="hidden" value="{{ Auth::user()->id }}" name="id">
 				<!-- form section -->
 				<div class="np_form-sec">
 					<h5 class="np_form-sec--title">
@@ -47,7 +42,7 @@
 
 						@include('includes.new-post--forms')
 
-						<button type="submit" class="primary-btn">
+						<button type="submit" class="primary-btn" id="newPostSubmit">
 							Отправить
 						</button>
 

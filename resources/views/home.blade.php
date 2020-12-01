@@ -12,12 +12,6 @@
     @include('includes.search.simple-search')
 @endsection
 
-@section('response-json')
-    <div id="responseCont" style="width: 100%; height: 100px; background: lightgreen; color: black; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size 20px;">
-
-    </div>
-@endsection
-
 @section('main-container')
     <section class="posts-wrapper">
         <div class="container">
@@ -31,40 +25,6 @@
                 </div>
 
                 <div class="posts_cont">
-                    {{-- <a href="#" class="posts_cont-item">
-                        <img src="/img/jewellery/4.jpg">
-
-                        <div class="featured">
-                            <p class="featured-price">
-                                <span>
-                                    300
-                                </span>
-                                AZN
-                            </p>
-                            <svg class="featured-fav">
-                                <use xlink:href="sprite.svg#fav"></use>
-                            </svg>
-                            <svg class="featured-vip">
-                                <use xlink:href="sprite.svg#vip"></use>
-                            </svg>
-                            <svg class="featured-zoom">
-                                <use xlink:href="sprite.svg#zoom"></use>
-                            </svg>
-                        </div>
-
-                        <div class="item_desc">
-                            <h6>
-                                Scrabba-babba-doo
-                            </h6>
-                            <p>
-                                Lorem ipsum dolor sit amet.
-                            </p>
-                            <span>
-                                Baki, 11.23.2020 15:12
-                            </span>
-                        </div>
-                    </a> --}}
-
                     @foreach ($posts as $post)
                         <a href="post/{{$post->id}}" class="posts_cont-item">
                             <!-- img -->

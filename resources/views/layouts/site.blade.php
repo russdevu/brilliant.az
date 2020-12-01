@@ -10,6 +10,8 @@
 <body>
 	@include('includes.auth-modals')
 
+	@include('includes.alert.alert')
+
 	<!-- Wrapper -->
 	<div class="page">
 		<div class="container">
@@ -157,7 +159,6 @@
 
 			<!-- Search -->
 			@yield('search')
-
 			@yield('response-json')
 			
 			<!-- Main -->

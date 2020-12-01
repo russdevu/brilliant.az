@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posts;
+use App\Models\Like;
 use Illuminate\Http\Client\Response;
 
 class PostsController extends Controller
@@ -39,7 +40,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        
+
         if ($request->hasFile('post_img')) {
             if ($request->file('post_img')->isValid()) {
 
@@ -52,10 +53,10 @@ class PostsController extends Controller
                 // fetching img file name
                 $fileName = $request->post_img->getClientOriginalName();
                 $request->post_img->storeAs('post_images', $user->id . '/' . $fileName, 'public');
-                
+
                 // sending data to db 'posts'
                 Posts::create([
-                    'user_id' => $request->input('id'),
+                    'user_id' => $user->id,
                     'post_title' => $request->input('post_title'),
                     'post_price' => $request->input('post_price'),
                     'post_desc' => $request->input('post_desc'),
@@ -64,16 +65,7 @@ class PostsController extends Controller
 
                 return back()->with('status', 'Публикация отправлена');
             }
-        }
-        
-        // $validated = $request->validate([
-        //     'post_img' => 'image|mimes:jpeg,png,jpg|max:2048'
-        // ]);
-
-        // $extension = $request->image->extension();
-
-        // $request->image->storeAs('/public', $validated['name'].".".$extension);
-        // $url = Storage::url($validated['name'].".".$extension);
+        }   
     }
 
     /**
@@ -125,28 +117,34 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function postLiked(Request $request, Posts $post)
+    // public function postLiked(Request $request, Posts $post)
+    public function postLiked(Request $request, Like $like)
     {
-        // defending post from 2nd like from the same user
-        if($post->likedBy($request->user()))
-        {
-            return response(null, 409);
-        }
-        
-        // ajax post
-        if (request()->ajax()) {
-            $post->likes()->create([
-                'user_id' => Auth::user()->id,
-                'post_id' => $request->postID,
-            ]);
-
-            return response()->json(['success' => 'Ajax request submitted successfully']);
-        } 
-        else 
-        {
-            return 'no';
-        }
+        // **** Working demo without ajax
+        // $post->likes()->create([
+        //     'user_id' => Auth::user()->id,
+        //     'post_id' => $request->input('post_id'),
+        // ]);
         // return back();
+        // **** end working demo
+
+        $like = new Like;
+        
+        // defending post from 2nd like from the same user
+        // if($post->likedBy($request->user()))
+        // {
+        //     return response(null, 409);
+        // }
+        
+        // // ajax post
+        // if (request()->ajax()) {
+            
+            // return $request;
+        //     return response()->json(['success' => 'Ajax request submitted successfully']);
+        // else 
+        // {
+        //     return 'no';
+        // }
         
     }
 

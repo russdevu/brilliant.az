@@ -1,18 +1,21 @@
-@if(!empty($success))
-    <div class="alert-box success">
-        {{-- {{ $success }} --}}
-        Test message.
-    </div>
-@endif
+<div class="alert-message-container">
+    @if(!empty($success))
+        <div id="alert-area" class="alert-area success">
+            {{-- {{ $success }} --}}
+            Test message.
+        </div>
+    @endif
 
-@if(!empty($warning))
-    <div class="alert-box warning">
-        {{ $warning }}
-    </div>
-@endif
+    @if(!empty($warning))
+        <div id="alert-area" class="alert-area warning">
+            {{ $warning }}
+        </div>
+    @endif
 
-@if(!empty($error))
-    <div class="alert-box error">
-        {{ $error }}
-    </div>
-@endif
+    @if(!empty($error))
+        <div id="alert-area" class="alert-area error">
+            {{ $error }}
+        </div>
+    @endif
+</div>
+

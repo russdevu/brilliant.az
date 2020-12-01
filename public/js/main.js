@@ -64,35 +64,8 @@ $('li.auth a').on(click, (e) => {
         if (navDropUl.hasClass('active') && e.target != navDropUl) {
             navDropUl.removeClass('active');
         }
-    })
+    });
 });
-
-// ajax form submissions
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-$('#addToFavs').on('submit', function (e) {
-    e.preventDefault();
-    let postID = $('#postID').val();
-    let _token = $('meta[name="csrf-token"]').attr('content');
-
-    $.ajax({
-        url: "/post/" + postID + "/liked",
-        type: "POST",
-        data: { post_id: postID },
-        _token: _token,
-        success: function (response) {
-            console.log(response);
-            if (response) {
-                $('.success').text(response.success);
-                $("#addToFavs")[0].reset();
-            }
-        },
-    })
-})
 
 // slots with images (upload images on /new-post)
 // const slot = $('.slot'),
@@ -105,3 +78,93 @@ $('#addToFavs').on('submit', function (e) {
 //     // alert($(this).children('input'));
 //     // $(this).children('input').click();
 // });
+
+// Alert message
+var AlertBox = function (id, option) {
+    this.show = function (msg) {
+        if (msg === '' || typeof msg === 'undefined' || msg === null) {
+            throw '"msg parameter is empty"';
+        }
+        else {
+            var alertArea = document.querySelector(id);
+            var alertBox = document.createElement('DIV');
+            var alertContent = document.createElement('DIV');
+            var alertClose = document.createElement('A');
+            var alertClass = this;
+            alertContent.classList.add('alert-content');
+            alertContent.innerText = msg;
+            alertClose.classList.add('alert-close');
+            alertClose.setAttribute('href', '#');
+            alertBox.classList.add('alert-box');
+            alertBox.appendChild(alertContent);
+            if (!option.hideCloseButton || typeof option.hideCloseButton === 'undefined') {
+                alertBox.appendChild(alertClose);
+            }
+            alertArea.appendChild(alertBox);
+            alertClose.addEventListener('click', function (event) {
+                event.preventDefault();
+                alertClass.hide(alertBox);
+            });
+            if (!option.persistent) {
+                var alertTimeout = setTimeout(function () {
+                    alertClass.hide(alertBox);
+                    clearTimeout(alertTimeout);
+                }, option.closeTime);
+            }
+        }
+    };
+
+    this.hide = function (alertBox) {
+        alertBox.classList.add('hide');
+        var disperseTimeout = setTimeout(function () {
+            alertBox.parentNode.removeChild(alertBox);
+            clearTimeout(disperseTimeout);
+        }, 500);
+    };
+};
+
+var alertNoClose = new AlertBox('#alert-area', {
+    closeTime: 3000,
+    persistent: false,
+    hideCloseButton: true
+});
+
+// show alert
+// alertNoClose.show('message');
+
+
+
+// ajax form submissions
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+// $('#addToFavs').on('submit', function (e) {
+//     e.preventDefault();
+    
+//     let postID = $('#postID').val();
+//     let _token = $('meta[name="csrf-token"]').attr('content');
+
+//     $.ajax({
+//         url: "/post/" + postID + "/liked",
+//         type: "POST",
+//         data: { 
+//             _token: _token,
+//             post_id: postID 
+//         },
+//         success: function (result) {
+//             console.log(result);
+//             // if (response) {
+//             //     $('.success').text(response.success);
+//             //     $("#addToFavs")[0].reset();
+//             // }
+//             // alertNoClose.show(response);
+//             // $("#addToFavs")[0].reset();
+//             // $('body').html(response);
+//         },
+//     })
+// })
+
+

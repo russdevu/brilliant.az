@@ -56,8 +56,8 @@ body {
 	font-size: 16px;
 	color: white;
 	border-radius: 3px;
-  transition: background .3s ease;
-  @include flex-center;
+	transition: background .3s ease;
+	@include flex-center;
 	background: $black-material;
 	&:hover {
 		background: $light-black;
