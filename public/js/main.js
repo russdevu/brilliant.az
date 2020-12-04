@@ -131,34 +131,3 @@ var alertNoClose = new AlertBox('#alert-area', {
 
 // show alert
 // alertNoClose.show('message');
-
-
-
-// ajax form submissions
-
-
-// $('#addToFavs').on('submit', function (e) {
-//     e.preventDefault();
-    
-//     let postID = $('#postID').val();
-//     let _token = $('meta[name="csrf-token"]').attr('content');
-
-//     $.ajax({
-//         url: "/post/" + postID + "/liked",
-//         type: "POST",
-//         data: { 
-//             _token: _token,
-//             post_id: postID 
-//         },
-//         success: function (result) {
-//             console.log(result);
-//             // if (response) {
-//             //     $('.success').text(response.success);
-//             //     $("#addToFavs")[0].reset();
-//             // }
-//             // alertNoClose.show(response);
-//             // $("#addToFavs")[0].reset();
-//             // $('body').html(response);
-//         },
-//     })
-// })

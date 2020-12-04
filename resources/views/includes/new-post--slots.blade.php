@@ -72,18 +72,14 @@
 		</div>
 	</div> --}}
 
-	<form action="{{ route('upload.images') }}" method="POST" class="dropzone" id="uploadImagesForm" enctype="multipart/form-data">
-
+	<form 
+		action="/upload-images" 
+		method="POST" 
+		accept-charset="UTF-8" 
+		class="dropzone dz-clickable" 
+		id="uploadImgForm" 
+		enctype="multipart/form-data">
 		@csrf
-		<div class="dz-message" data-dz-message style="width:60%; margin: 0 auto;">
-				<span style="font-weight: 400; font-size: 17px;">
-						Перетащите и отпустите изображения в это поле. 
-					<br><br>
-						Вы также можете кликнуть по этому полю и загрузить несколько изображений удерживая клавишу Ctrl, либо просто выделить нужные изображения и нажать "ОК".
-					<br><br>
-						Нельзя загружать более 10-ти изображений.
-				</span>
-		</div>
-		<button class="primary-btn" width="100px" id="submitDropFiles">SUBMIT</button>
+		<button type="submit" class="primary-btn" width="100px" id="submitDropFiles" style="cursor:pointer;">SUBMIT</button>
 	</form>	
 </div>

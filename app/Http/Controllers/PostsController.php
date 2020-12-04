@@ -39,6 +39,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+
         // ******* WORKING DEMO **************
         // $user = Auth::user();
 
@@ -72,22 +73,6 @@ class PostsController extends Controller
         //     return back()->with('status', 'Что-то не так...');
         // }
         // ******* END WORKING DEMO 
-        $path = storage_path('tmp/uploads');
-
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
-        }
-
-        $file = $request->file('file');
-
-        $name = uniqid() . '_' . trim($file->getClientOriginalName());
-
-        $file->move($path, $name);
-
-        return response()->json([
-            'name'          => $name,
-            'original_name' => $file->getClientOriginalName(),
-        ]);
     }
 
     /**
