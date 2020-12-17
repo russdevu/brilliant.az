@@ -16,6 +16,7 @@ class Posts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('post_custom_id');
             $table->string('post_title');
             $table->smallInteger('post_price');
             $table->text('post_desc');

@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="save">
+    <form wire:submit.prevent="save" id="newPostForm">
         @if($photos)
             @foreach($photos as $photo)
                 <img src="{{ $photo->temporaryUrl() }}">
@@ -9,10 +9,11 @@
              x-on:livewire-upload-start="isUploading = true" 
              x-on:livewire-upload-finish="isUploading = false" 
              x-on:livewire-upload-error="isUploading = false" 
-             x-on:livewire-upload-progress="progress = $event.detail.progress"
-        >
+             x-on:livewire-upload-progress="progress = $event.detail.progress">
     
                 <input type="file" multiple wire:model="photos">
+                <input type="hidden" id="custom_post_id" name="custom_post_id" value="">
+
 
                 <div wire:loading wire:target="photo">Uploading</div>
                 <div wire:loading wire:target="save">Storing</div>

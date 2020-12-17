@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -19,14 +20,18 @@ class UploadImages extends Component
         ]);
     }
 
-    public function save()
+    public function save(Request $request)
     {
         // $user = Auth::user();
 
-        foreach($this->photo as $photo) 
-        { 
-            $fileName = $photo->getClientOriginalName();
-            $photo->store('photos');
+        foreach($this->photos as $photo) 
+        {
+            $user = Auth::user();
+            $custom_post_id = $request->custom_post_id;
+            $file_name = $photo->getClientOriginalName();
+            // $photo->storeAs('photos', 'avatar');
+            dd($custom_post_id);
+            $photo->storeAs('posts', $user->id . '/' . $custom_post_id . '/' . $file_name, 'public');
         }
         
     }
